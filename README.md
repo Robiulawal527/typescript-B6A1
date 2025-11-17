@@ -36,24 +36,24 @@
 
 2. keyof
 
-   keyof হলো একটি utility keyword, যা object type এর keys গুলোকে union type হিসেবে রিটার্ন করে।
+        keyof হলো একটি utility keyword, যা object type এর keys গুলোকে union type হিসেবে রিটার্ন করে।
 
-   type Person = {
-   name: string;
-   age: number;
-   location: string;
-   };
+        type Person = {
+        name: string;
+        age: number;
+        location: string;
+        };
 
-   type PersonKeys = keyof Person;
+        type PersonKeys = keyof Person;
 
-   function getValue(obj: Person, key: PersonKeys) {
-   return obj[key];
-   }
+        function getValue(obj: Person, key: PersonKeys) {
+        return obj[key];
+        }
 
-   const p = { name: "Robi", age: 20, location: "Dhaka" };
+        const p = { name: "Robi", age: 20, location: "Dhaka" };
 
-   console.log(getValue(p, "age"));
+        console.log(getValue(p, "age"));
 
-   keyof Person object এর সব key (“name”, “age”, “location”) কে union type বানিয়ে ফেলে।
+        keyof Person object এর সব key (“name”, “age”, “location”) কে union type বানিয়ে ফেলে।
 
-   ফলে ভুল key দিলে TypeScript আগে থেকেই error দেখাবে।
+        ফলে ভুল key দিলে TypeScript আগে থেকেই error দেখাবে।
