@@ -34,33 +34,26 @@
 
         Primitive বা Function Signature এর জন্য টাইপ এলিয়াস সংজ্ঞায়িত করতে সাধারণত টাইপ ব্যবহার করা হয়.
 
+2. keyof
 
+   keyof হলো একটি utility keyword, যা object type এর keys গুলোকে union type হিসেবে রিটার্ন করে।
 
-2. keyof 
+   type Person = {
+   name: string;
+   age: number;
+   location: string;
+   };
 
-    keyof হলো একটি utility keyword, যা object type এর keys গুলোকে union type হিসেবে রিটার্ন করে।
+   type PersonKeys = keyof Person;
 
-    type Person = {
-    name: string;
-    age: number;
-    location: string;
-    };
+   function getValue(obj: Person, key: PersonKeys) {
+   return obj[key];
+   }
 
-    type PersonKeys = keyof Person;
+   const p = { name: "Robi", age: 20, location: "Dhaka" };
 
-    function getValue(obj: Person, key: PersonKeys) {
-    return obj[key];
-    }
+   console.log(getValue(p, "age"));
 
-    const p = { name: "Robi", age: 20, location: "Dhaka" };
+   keyof Person object এর সব key (“name”, “age”, “location”) কে union type বানিয়ে ফেলে।
 
-    console.log(getValue(p, "age"));   
-
-
-
-    keyof Person object এর সব key (“name”, “age”, “location”) কে union type বানিয়ে ফেলে।
-
-    ফলে ভুল key দিলে TypeScript আগে থেকেই error দেখাবে।
-
-
-
+   ফলে ভুল key দিলে TypeScript আগে থেকেই error দেখাবে।
