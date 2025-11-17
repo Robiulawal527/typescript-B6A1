@@ -1,5 +1,19 @@
 
-let x = 5; 
+function formatValue(value: string | number | boolean): string | number | boolean {
+    
+    if (typeof value === "string"){
+        return value.toUpperCase();
+    }
 
-console.log(x);
+    else if ( typeof value === "number") {
+        return value * 10;
+    }
+
+    else if(typeof value === "boolean"){
+        return !value;
+    }
+
+    return value;
+
+}
 
