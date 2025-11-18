@@ -1,19 +1,25 @@
 
-function formatValue(value: string | number | boolean): string | number | boolean {
+function formatValue(givenValue: string | number | boolean): string | number | boolean 
+
+{
     
-    if (typeof value === "string"){
-        return value.toUpperCase();
+    if ( typeof givenValue === "string"){
+
+        return givenValue.toUpperCase();
+
     }
 
-    else if ( typeof value === "number") {
-        return value * 10;
+    else if ( typeof givenValue === "number") {
+        return givenValue * 10;
     }
 
-    else if(typeof value === "boolean"){
-        return !value;
+    else if (typeof givenValue === "boolean"){
+
+
+        return !givenValue;
     }
 
-    return value;
+    return givenValue;
 
 }
 
@@ -22,16 +28,22 @@ function formatValue(value: string | number | boolean): string | number | boolea
 
 
 
-function getLength(value: string | any[]): number {
+function getLength(values: string | any[]): number {
 
-    if (typeof value === "string"){
+    if (typeof values === "string")
+        
+    {
 
-        return value.length;
+        return values.length;
+
     }
 
-    else if(Array.isArray(value)){
+    else if(Array.isArray(values))
+        
+    {
 
-        return value.length;
+
+        return values.length;
     }
 
 
@@ -44,15 +56,20 @@ function getLength(value: string | any[]): number {
 
 
 class Person{
+
     name: string;
     age: number;
 
-    constructor(name: string, age: number){
+    constructor(name: string, age: number)
+    
+    {
         this.name = name;
         this.age = age;
     }
 
-    getDetails(): string{
+    getDetails(): string
+    
+    {
         return `Name: ${this.name}, Age: ${this.age}`;
 
     }
@@ -65,16 +82,20 @@ class Person{
 
 
 
-type Item = {title: string; rating: number};
+type itemsAre = { title : string ; rating :  number};
 
-function filterByRating(items: Item[]): Item[]{
+function filterByRating(items_are: itemsAre[]): itemsAre[]
 
-    return items.filter(item => item.rating >= 4);
+{
+
+    return items_are.filter(item => item.rating >= 4);
 }
 
-type User = {id: number; name: string; email: string; isActive: boolean};
+type Users = { id: number; name: string; email: string; isActive: boolean} ;
 
-function filterActiveUsers(users: User[]): User[]{
+function filterActiveUsers(users: Users[]): Users[]
+
+{
 
     return users.filter(user => user.isActive);
 
@@ -95,13 +116,13 @@ interface Book{
 
 }
 
-function printBookDetails(book: Book): string{
+function printBookDetails(b : Book) : string{
 
 
-    const available = book.isAvailable ? 'Yes' : 'No';
+    const available = b.isAvailable ? 'Yes' : 'No';
 
     
-    return `Title: ${book.title}, Author: ${book.author}, Published: ${book.publishedYear}, Available: ${available}` ;
+    return `Title: ${b.title}, Author: ${b.author}, Published: ${b.publishedYear}, Available: ${available}` ;
 
 
 }
@@ -110,33 +131,35 @@ function printBookDetails(book: Book): string{
 
 
 
-function getUniqueValues(arr_1: number[] | string[], arr_2: number[] | string[]): (number |string)[] {
+function getUniqueValues(array_one: number[] | string[], array_two: number[] | string[]): (number |string)[]
+
+{
 
 
     const result : (number | string )[] = [] ;
 
-    const addIfMissing = (value : number | string) =>{
-        let found = false;
+    const addingIfMissing = (values : number | string) =>{
+        let flag = false;
         for(let i = 0;  i< result.length; i++){
-            if(result[i] === value){
+            if(result[i] === values){
 
-                found = true;
+                flag = true;
 
                 break;
             }
         }
 
-        if (!found){
-            result.push(value);
+        if (!flag){
+            result.push(values);
         }
     };
 
-    for(const item of arr_1){
-        addIfMissing(item);
+    for(const item of array_one){
+        addingIfMissing(item);
     }
 
-    for(const item of arr_2){
-        addIfMissing(item);
+    for(const item of array_two){
+        addingIfMissing(item);
     }
 
 
@@ -148,19 +171,32 @@ function getUniqueValues(arr_1: number[] | string[], arr_2: number[] | string[])
 
 
 
-type Product= { name: string; price: number; quantity: number; discount?: number};
+type Product= { name: string; price: number; quantity: number; discout?: number};
 
 
-function calculateTotalPrice(products: Product[]): number{
+function calculateTotalPrice(productsare: Product[]): number
 
 
-    return products.reduce((total, product) => {
+{
 
-        const price = product.price * product.quantity; 
-        const discoutedPrice = product.discount ? price * (1- product.discount / 100): price; 
 
-        return total + discoutedPrice;
-    }, 0);
+    return productsare.reduce
+    (
+        
+        (total, product) => 
+        {
+
+            const Price = product.price * product.quantity; 
+            let discoutedPrice: number;
+            if (product.discout) {
+            discoutedPrice = Price * (1 - product.discout / 100);
+            } else {
+            discoutedPrice = Price;
+            }
+
+            return total + discoutedPrice;
+        }, 0 
+    );
 
 }
 
